@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<script src="./lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <span>{{ time | formatDate }}</span>
+        <span>{{formatDate}}</span>
+        <span>{{format()}}</span>
+        <span :title="msg">悬停<span>
+        <span >{{ msg }}<span>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app'
+        ,data: {
+            time: new Date()
+            ,msg: new Date().toLocaleString()
+        }
+        ,filters: {
+            formatDate:function(time){
+                return '时间';
+            }
+        }
+        ,computed: {
+            formatDate:function(){
+                return Date.now();
+            }
+        }
+        ,methods: {
+            format: function(){
+                this.test = 'hello';
+                return this.test;
+            }
+        }
+    });
+</script>
+</html>
